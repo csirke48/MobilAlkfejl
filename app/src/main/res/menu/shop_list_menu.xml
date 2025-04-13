@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/search_bar"
+        android:title="@string/kereso"
+        android:icon="@drawable/search"
+        app:showAsAction="always"
+        app:actionViewClass="com.google.android.material.search.SearchView"
+        />
+
+    <item
+        android:id="@+id/cart"
+        android:title="@string/kosar"
+        android:icon="@drawable/shopping_cart"
+        app:showAsAction="always"
+        app:actionLayout="@layout/custom_menu_item"
+        />
+
+    <item
+        android:id="@+id/view_selector"
+        android:title="@string/nezet_valtasa"
+        android:icon="@drawable/view"
+        app:showAsAction="ifRoom"
+        />
+
+    <item
+        android:id="@+id/settings_button"
+        android:title="@string/beallitasok"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/log_out_button"
+        android:title="@string/kijelentkezes"
+        app:showAsAction="never"
+        />
+</menu>

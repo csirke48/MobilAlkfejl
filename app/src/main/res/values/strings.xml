@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">eskuvoBolt</string>
+    <string name="felhasznalonev">Felhasználónév</string>
+    <string name="jelszo">Jelszó</string>
+    <string name="bejelentkezes">Bejelentkezés</string>
+    <string name="regisztracio">Regisztráció</string>
+    <string name="mail_cim">E-mail cím</string>
+    <string name="jelszo_ujra">Jelszó újra</string>
+    <string name="megse">Mégse</string>
+    <string name="telefonszam">Telefonszám</string>
+    <string name="szallitasi_cim">Szállítási cím</string>
+    <string name="termek_leiras">Termékleírás</string>
+    <string name="vengeg_login">Bejelentkezés vendégként</string>
+    <string name="google_login">Bejelentkezés Google-al</string>
+    <string name="itemtitle">Leírás</string>
+    <string name="kosarba">Kosárba</string>
+
+    <!-- RecyclerView resources -->
+    <string name="title_placeholder">Név</string>
+    <string name="item_placeholder">Leírás</string>
+    <string name="item_info_placeholder">Infó</string>
+    <string name="beallitasok">Beállítások</string>
+    <string name="kijelentkezes">Kijelentkezés</string>
+    <string name="nezet_valtasa">Nézet váltása</string>
+    <string name="kosar">Kosár</string>
+    <string name="kereso">Kereső</string>
+
+    <string-array name="shopping_item_names">
+        <item>Adománygyűjtő doboz</item>
+        <item>Elegáns ültetőkártya</item>
+        <item>Vendégkönyv</item>
+    </string-array>
+
+    <string-array name="shopping_item_desc">
+        <item>Ez egy adománygyűjtő doboz, sok embert bevonz a csábító kinézetével, így sok pénz gyűlik benne össze!</item>
+        <item>Ez egy személyre szabható elegáns ültetőkártya!</item>
+        <item>Ez egy vendégkönyv, semmi extra, ha minden igaz nem robbant ki semmilyen háborút… vagy… mégis?!</item>
+    </string-array>
+
+    <array name="shopping_item_rates">
+        <item>3.5</item>
+        <item>5</item>
+        <item>4</item>
+    </array>
+
+    <array name="shopping_item_images">
+        <item>@drawable/doboz</item>
+        <item>@drawable/ultetokartya</item>
+        <item>@drawable/vendegkonyv</item>
+    </array>
+
+    <array name="shopping_item_price">
+        <item>100 Ft</item>
+        <item>500 Ft</item>
+        <item>700 Ft</item>
+    </array>
+</resources>

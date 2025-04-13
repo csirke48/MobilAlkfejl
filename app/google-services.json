@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "467795003432",
+    "project_id": "eskuvoshop-4de1f",
+    "storage_bucket": "eskuvoshop-4de1f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:467795003432:android:0b2f262ea333cfdbf80d1d",
+        "android_client_info": {
+          "package_name": "com.example.eskuvobolt"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADyDDJxx4khDJ6JIYI1ec5nxe9CaJ-zOY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
