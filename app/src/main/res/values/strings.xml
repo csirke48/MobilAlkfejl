@@ -24,6 +24,11 @@
     <string name="nezet_valtasa">Nézet váltása</string>
     <string name="kosar">Kosár</string>
     <string name="kereso">Kereső</string>
+    <string name="torles">Törlés</string>
+    <string name="kereses">Keresés</string>
+    <string name="CREDITS">Készítette: Kis Kevin\nNeptun: S3F03W\nTárgy: Mobil alkfejl\nDátum: 2025.05.17</string>
+    <string name="keszito">Készítők</string>
+    <string name="backToMainScreen">Vissza a főképernyőre</string>
 
     <string-array name="shopping_item_names">
         <item>Adománygyűjtő doboz</item>

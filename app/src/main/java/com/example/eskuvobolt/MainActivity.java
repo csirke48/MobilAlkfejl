@@ -1,15 +1,18 @@
 package com.example.eskuvobolt;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -20,7 +23,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.api.Api;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -52,6 +54,10 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        if (!isNetworkAvailable()) {
+            Toast.makeText(MainActivity.this, "Nincs internetkapcsolat! Vendégként nem lehet belépni.", Toast.LENGTH_SHORT).show();
+        }
+
         userNameET = findViewById(R.id.editTextUsername);
         pwdET = findViewById(R.id.editTextPassword);
 
@@ -65,10 +71,17 @@ public class MainActivity extends AppCompatActivity {
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
+
+
         Log.i(LOG_TAG, "onCreate");
     }
 
     private void firebaseAuthWithGoogle(String idToken) {
+        if (!isNetworkAvailable()) {
+            Toast.makeText(MainActivity.this, "Nincs internetkapcsolat! Nem lehet belépni.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
         mAuth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
@@ -102,11 +115,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startShopping() {
-        Intent intent = new Intent(this, ShopList.class);
+        Intent intent = new Intent(this, ShopListActivity.class);
         startActivity(intent);
     }
 
     public void login(View view) {
+        if (!isNetworkAvailable()) {
+            Toast.makeText(MainActivity.this, "Nincs internetkapcsolat! Nem lehet belépni.", Toast.LENGTH_SHORT).show();
+            return;
+        }
         // szöveg lekérdezés
         String userName = userNameET.getText().toString();
         String pwd = pwdET.getText().toString();
@@ -127,9 +144,19 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public void openKeszitok(View view) {
+        Intent intent = new Intent(this, CreatorActivity.class);
+        startActivity(intent);
+    }
+
+
     public void register(View view) {
+        if (!isNetworkAvailable()) {
+            Toast.makeText(MainActivity.this, "Nincs internetkapcsolat! Nem lehet regisztrálni.", Toast.LENGTH_SHORT).show();
+            return;
+        }
         // Register activity megnyitása
-        Intent intent = new Intent(this, Register.class);
+        Intent intent = new Intent(this, RegisterActivity.class);
         intent.putExtra("SECRET_KEY", SECRET_KEY);
         startActivity(intent);
     }
@@ -177,6 +204,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loginGuest(View view) {
+        if (!isNetworkAvailable()) {
+            Toast.makeText(MainActivity.this, "Nincs internetkapcsolat! Vendégként nem lehet belépni.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         mAuth.signInAnonymously().addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -185,14 +217,21 @@ public class MainActivity extends AppCompatActivity {
                     startShopping();
                 } else {
                     Log.d(LOG_TAG, "[!] ANONIM_USER_LOGIN_FAILURE");
-                    Toast.makeText(MainActivity.this, "[!] ANONIM_USER_LOGIN_FAILURE" + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(MainActivity.this, "[!] ANONIM_USER_LOGIN_FAILURE" + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
-
     public void loginWithGoogle(View view) {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
+
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
 }

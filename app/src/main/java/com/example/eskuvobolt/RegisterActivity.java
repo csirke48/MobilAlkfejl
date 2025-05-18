@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -21,8 +20,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Register extends AppCompatActivity {
-    private static final String LOG_TAG = Register.class.getName();
+public class RegisterActivity extends AppCompatActivity {
+    private static final String LOG_TAG = RegisterActivity.class.getName();
     private static final String PREF_KEY = MainActivity.class.getPackage().toString();
     private static final int SECRET_KEY = 99;
     EditText userNameET;
@@ -103,7 +102,7 @@ public class Register extends AppCompatActivity {
                     startShopping();
                 } else {
                     Log.d(LOG_TAG, "[!] USER_CREATION_FAILURE");
-                    Toast.makeText(Register.this, "[!] USER_CREATION_FAILURE" + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterActivity.this, "[!] USER_CREATION_FAILURE" + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -112,7 +111,7 @@ public class Register extends AppCompatActivity {
     private void startShopping() {
         // Felhasználók adatai
 
-        Intent intent = new Intent(this, ShopList.class);
+        Intent intent = new Intent(this, ShopListActivity.class);
         //intent.putExtra("SECRET_KEY", SECRET_KEY);
         startActivity(intent);
     }

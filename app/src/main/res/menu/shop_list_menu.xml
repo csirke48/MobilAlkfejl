@@ -3,11 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/search_bar"
-        android:title="@string/kereso"
-        android:icon="@drawable/search"
-        app:showAsAction="always"
-        app:actionViewClass="com.google.android.material.search.SearchView"
-        />
+        android:title="@string/kereses"
+        android:icon="@android:drawable/ic_menu_search"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="collapseActionView|ifRoom" />
 
     <item
         android:id="@+id/cart"
@@ -22,12 +21,6 @@
         android:title="@string/nezet_valtasa"
         android:icon="@drawable/view"
         app:showAsAction="ifRoom"
-        />
-
-    <item
-        android:id="@+id/settings_button"
-        android:title="@string/beallitasok"
-        app:showAsAction="never"
         />
 
     <item
